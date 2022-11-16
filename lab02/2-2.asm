@@ -9,57 +9,17 @@
 %include "asm_io.inc"
 	
 	section .data
-msg	db	"asm_io library test", 0x0a, 0x00
-out_string	db "Just a string" ; define a string
+out_string	db "some string" ; define a string
 
-	section .bss
-string	resb	12
 
 	section .text
 	global main
 main:
-	enter	0,0
-
-	dump_regs	1
-	;print out a new line character
-	call	print_nl
-
-	; print out a character whose ASCII value stored in AL
-	mov	al, 'A'
-	call	print_char	
-	call	print_nl
-	dump_regs	2
-	;print out a new line character
-	call	print_nl
-
-	; print out value of integer stored in EAL
-        mov     eax,1024*1024*2
-        call	print_int
-	call	print_nl
-	dump_regs	3
-	;print out a new line character
-	call	print_nl
-
-	; print out the contents of the string at the address 
-	; stored in EAX
-	mov	eax, msg
-	call	print_string
-	dump_regs	4
-	;print out a new line character
-	call	print_nl
-
-	call	read_int
-	call	print_int
-	call	print_nl
+	enter 0,0
 
 	;print out_string
 	mov	eax, out_string
 	call	print_string
-	dump_regs	5
-	call	print_nl
-
-	call	read_int
-	call	print_int
 	call	print_nl
 
 	leave
