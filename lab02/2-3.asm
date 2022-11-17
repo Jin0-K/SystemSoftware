@@ -7,7 +7,7 @@
 
 	segment	.text
 	global 	main
-main
+main :
 	enter	0,0		; setup stack frame
 	pusha
 
